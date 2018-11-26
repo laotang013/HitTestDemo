@@ -23,6 +23,42 @@
         BOOL didAddMethod = class_addMethod(class, oriSel, method_getImplementation(swiMethod), method_getTypeEncoding(swiMethod));
         if (didAddMethod) {
             NSLog(@"添加成功");
+            
+            
+            // 添加方法
+//            BOOL class_addMethod ( Class cls, SEL name, IMP imp, const char *types );
+//            
+//            // 获取实例方法
+//            Method class_getInstanceMethod ( Class cls, SEL name );
+//            
+//            // 获取类方法
+//            Method class_getClassMethod ( Class cls, SEL name );
+//            
+//            // 获取所有方法的数组
+//            Method * class_copyMethodList ( Class cls, unsigned int *outCount );
+//            
+//            // 替代方法的实现
+//            IMP class_replaceMethod ( Class cls, SEL name, IMP imp, const char *types );
+//            
+//            // 返回方法的具体实现
+//            IMP class_getMethodImplementation ( Class cls, SEL name );
+//            
+//            IMP class_getMethodImplementation_stret ( Class cls, SEL name );
+//            
+//            // 类实例是否响应指定的selector
+//            BOOL class_respondsToSelector ( Class cls, SEL sel );
+//            
+//            作者：齐滇大圣
+//            链接：https://www.jianshu.com/p/73e454178e77
+//            來源：简书
+//            简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
+            
+//            如果方法添加成功，则说明原类并不存在将要被替换的 originalMethod，此时我们再对名为 swizzledSelector方法进行整体结构替换，这样一来我们变向实现了方法交换，你在调用原类 originalSelector 时的实现为 swizzledMethod结构中的具体内容，而原本用来交换的方法 swizzledSelector 的实现也变成了 originalMethod 的具体实现。如果方法添加失败，则说明原类中已经存在了要被替换的 originalSelector，可以安全的进行 method_exchangeImplementations 交换
+//            链接：https://www.jianshu.com/p/c4b59bd2cd83
+            
+            
+            
+            
             //如果成功，说明类中不存在这个方法的实现
             //将被交换方法的实现替换到这个并不存在的实现
             class_replaceMethod(self, swiSel, method_getImplementation(oriMethod), method_getTypeEncoding(oriMethod));

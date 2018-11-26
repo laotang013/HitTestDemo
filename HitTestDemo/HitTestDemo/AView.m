@@ -8,7 +8,18 @@
 
 #import "AView.h"
 #import "UIView+HitTest.h"
+#import "AView+AView.h"
 @implementation AView
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+       
+    }
+    return self;
+}
+
+
 /*
   视图查找流程
     1.调用hitTest方法进行最优响应查询
@@ -50,5 +61,4 @@
     
     return hitView ? : self;
 }
-
 @end
